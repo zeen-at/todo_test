@@ -1,0 +1,37 @@
+{
+    "todos": [
+    {
+        "id": 1,
+        "title": "Shop",
+        "date": "02-02-2025",
+        "description": "Shop for groceries",
+        "done": false,
+        "createdby": "Zainab"
+    },
+    {
+        "id": 2,
+        "title": "Paint",
+        "date": "19-01-2025",
+        "description": "Paint the room",
+        "done": false,
+        "createdby": "Zinat"
+    },
+    {
+        "id": 1,
+        "title": "Walk",
+        "date": "20-01-2025",
+        "description": "Walk the dog",
+        "done": false,
+        "createdby": "Zaynab"
+    },
+    {
+        "id": 1,
+        "title": "Laundry",
+        "date": "27-01-2025",
+        "description": "Visit the laundromat",
+        "done": false,
+        "createdby": "Zeenat"
+    }
+
+]
+}
