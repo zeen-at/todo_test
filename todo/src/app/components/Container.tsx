@@ -25,7 +25,7 @@ const Container = ({
         darkMode ? "dark" : ""
       } min-h-screen max-w-[1440px] ${className}`}
     >
-      <div className="dark:bg-gray-900 ">
+      <div className="bg-white dark:bg-gray-900 ">
         <div className="flex justify-end">
           <button
             onClick={() => setDarkMode(!darkMode)}
