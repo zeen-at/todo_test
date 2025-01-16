@@ -84,7 +84,7 @@ const Home = () => {
                       {...provided.droppableProps}
                       ref={provided.innerRef}
                     >
-                      {todo.slice(0, 4).map((item: INewTodo, index: number) => (
+                      {todo.slice(0, 6).map((item: INewTodo, index: number) => (
                         <Draggable
                           key={item.id}
                           draggableId={item.id.toString()}

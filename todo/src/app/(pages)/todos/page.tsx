@@ -8,7 +8,7 @@ import Link from "next/link";
 import { RootState, useAppSelector } from "@/redux/store";
 import Header from "@/app/components/Header";
 import { INewTodo } from "../../../../types";
-import { colorArray, pusher } from "@/app/utils";
+import { colorArray } from "@/app/utils";
 import { useDispatch } from "react-redux";
 import {
   createATodo,
@@ -43,25 +43,25 @@ const Todo = () => {
     }
   };
 
-  useEffect(() => {
-    const channel = pusher.subscribe("todo-channel");
+  // useEffect(() => {
+  //   const channel = pusher.subscribe("todo-channel");
 
-    channel.bind("todo-edit", (data: { todo: INewTodo }) => {
-      dispatch(editTodo(data.todo));
-    });
+  //   channel.bind("todo-edit", (data: { todo: INewTodo }) => {
+  //     dispatch(editTodo(data.todo));
+  //   });
 
-    channel.bind("todo-added", (data: { todo: INewTodo }) => {
-      dispatch(createATodo(data.todo));
-    });
+  //   channel.bind("todo-added", (data: { todo: INewTodo }) => {
+  //     dispatch(createATodo(data.todo));
+  //   });
 
-    channel.bind("todo-deleted", (data: { id: string }) => {
-      dispatch(deleteTodo(data.id));
-    });
+  //   channel.bind("todo-deleted", (data: { id: string }) => {
+  //     dispatch(deleteTodo(data.id));
+  //   });
 
-    return () => {
-      pusher.unsubscribe("todo-channel");
-    };
-  }, [dispatch]);
+  //   return () => {
+  //     pusher.unsubscribe("todo-channel");
+  //   };
+  // }, [dispatch]);
 
   const filteredtodo = todos?.filter(
     (item: INewTodo) =>
