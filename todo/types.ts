@@ -30,7 +30,7 @@ export interface INewTodo {
     date: string;
     description: string;
     // createdby: string;
-    category: "Personal" | "Work" | "Urgent";
+    category: string;
     start?: Date;   
   end?: Date; 
 }
