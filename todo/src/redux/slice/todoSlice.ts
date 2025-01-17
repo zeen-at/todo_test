@@ -53,8 +53,9 @@ const todoSlice = createSlice({
         title: action.payload.title,
         date: action.payload.date,
         description: action.payload.description,
-        createdby: action.payload.createdby,
+        // createdby: action.payload.createdby,
         done: action.payload.done,
+        category: action.payload.category
         
       };
       state.todos.push(newTodo);

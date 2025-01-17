@@ -9,7 +9,8 @@ const TaskCard = (
     date,
     title,
     done,
-    createdby,
+    category
+    // createdby,
   }: INewTodo
 ) => {
   const router = useRouter();
@@ -28,7 +29,7 @@ const TaskCard = (
         <div className="flex flex-col gap-3">
           <p className="font-bold ">{title}</p>
 
-          <p className="italic">{createdby}</p>
+          <div className={`italic font-medium ${category === "Urgent" ? "text-red-700" : category === "Work" ? "text-white" : "text-black"}`}>{category}</div>
         </div>
       </div>
     </button>

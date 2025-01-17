@@ -14,6 +14,7 @@ export const EditTodoSchema = Yup.object().shape({
   description: Yup.string(),
   date: Yup.date().required("Required"),
   createdby: Yup.string(),
+  category: Yup.string(),
 });
 
 

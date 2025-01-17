@@ -36,8 +36,9 @@ const EditTodo = () => {
     title: todos.title || "",
     date: todos.date || "",
     description: todos.description || "",
-    createdby: todos.createdby || "",
+    // createdby: todos.createdby || "",
     done: todos.done || false,
+    category: todos.category || ""
   };
 
 
@@ -112,14 +113,23 @@ const EditTodo = () => {
                   otherStyles="my-2"
                   type="text"
                 />
-                <CustomInput
+                {/* <CustomInput
                   title="Created By"
                   placeholder={""}
                   value={values.createdby}
                   handleChange={handleChange("createdby")}
                   otherStyles="my-2"
                   type="text"
-                />
+                /> */}
+                <select
+                      value={values.category}
+                      onChange={handleChange("category")}
+                      className="dark:bg-gray-900 dark:text-gray-200 outline-none"
+                    >
+                      <option value="urgent">Urgent</option>
+                      <option value="personal">Personal</option>
+                      <option value="work">Work</option>
+                    </select>
                 <CustomButton title="Update Task" handleClick={handleSubmit} />{" "}
               </form>
             )}

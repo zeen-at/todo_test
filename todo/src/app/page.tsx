@@ -117,7 +117,8 @@ const Home = () => {
                                 title={item.title}
                                 description={item.description}
                                 id={item.id}
-                                createdby={item.createdby}
+                                // createdby={item.createdby}
+                                category={item.category}
                               />
                             </div>
                           )}

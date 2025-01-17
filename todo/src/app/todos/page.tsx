@@ -71,7 +71,7 @@ const Todo = () => {
             <>
               {filteredtodo.map(
                 (
-                  { id, title, description, date, createdby, done }: INewTodo,
+                  { id, title, description, date, category, done }: INewTodo,
                   index: number
                 ) => (
                   <div
@@ -87,10 +87,10 @@ const Todo = () => {
                       onChange={() => handleCheck(id)}
                     />
                     <div className="grid">
-                      <div className="">{date}</div>
-                      <div className="">{title}</div>
-                      <div className="">{description}</div>
-                      <div className="">{createdby}</div>
+                      <div >{date}</div>
+                      <div >{title}</div>
+                      <div >{description}</div>
+                      <div className={`font-bold ${category === "Urgent" ? "text-red-700" : category === "Work" ? "text-white" : "text-black"}`}>{category}</div>
                       <div className=" flex gap-5 font-bold"></div>
                     </div>
                     <div className="flex gap-10">

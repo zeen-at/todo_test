@@ -19,7 +19,8 @@ export interface ITodo {
     title: string;
     date: string;
     description: string;
-    createdby: string;
+    // createdby: string;
+    category: string
 }
 
 export interface INewTodo {
@@ -28,7 +29,8 @@ export interface INewTodo {
     title: string;
     date: string;
     description: string;
-    createdby: string;
+    // createdby: string;
+    category: "Personal" | "Work" | "Urgent";
     start?: Date;   
   end?: Date; 
 }

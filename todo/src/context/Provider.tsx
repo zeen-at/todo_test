@@ -26,9 +26,10 @@ const TodoProvider:React.FC<{children: React.ReactNode}> = ({children}) => {
             id: uuidv4() as string, 
             title: todo.title,
             date: todo.date,
-            createdby: todo.createdby,
+            // createdby: todo.createdby,
             description: todo.description,
             done: todo.done,
+            category: todo.category
             
           };
           setTodos([...todos, newTodo])
