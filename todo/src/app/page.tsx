@@ -1,21 +1,29 @@
 "use client";
 
-import { RootState, useAppSelector } from "@/redux/store";
+import { RootState, useAppDispatch, useAppSelector } from "@/redux/store";
 import moment from "moment";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { INewTodo } from "../../types";
-import TaskCard from "./components/TaskCard";
-import { colorArray, textColors } from "./utils";
+import TaskCard from "../components/TaskCard";
+import { colorArray, textColors } from "../utils";
 import { DragDropContext, Draggable } from "react-beautiful-dnd";
 import { StrictModeDroppable as Droppable } from "@/helpers/strictModeDroppable";
 import { useEffect, useState } from "react";
-import Container from "./components/Container";
+import Container from "../components/Container";
+import { fetchTodosAync, updateTodo } from "@/redux/slice/todoSlice";
 
 const Home = () => {
+
+  const dispatch = useAppDispatch()
+
   const todo = useAppSelector((state: RootState) => state.todos);
 
 
+  useEffect(() => {
+  dispatch(fetchTodosAync());
+  }, [dispatch])
+  
 
   const [todos, updateTodos] = useState(todo || [])
 
@@ -36,7 +44,8 @@ const Home = () => {
   useEffect(() => {
     updateTodos(todo)
   }, [todo])
-
+  
+  
   return (
     <Container >
 

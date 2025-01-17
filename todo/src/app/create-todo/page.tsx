@@ -8,11 +8,12 @@ import { todoValidation } from "../../utils";
 import Header from "../../components/Header";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { INewTodo, ITodo } from "../../../../types";
-import Pusher from "pusher-js";
-import { useDispatch } from "react-redux";
-import { createATodo } from "@/redux/slice/todoSlice";
-import Container from "@/app/components/Container";
+import { ITodo } from "../../../types";
+import { createTodosAync } from "@/redux/slice/todoSlice";
+import Container from "@/components/Container";
+import { useAppDispatch } from "@/redux/store";
+import { v4 as uuidv4 } from "uuid";
+
 
 const initialTodo: ITodo = {
   title: "",
@@ -24,24 +25,16 @@ const initialTodo: ITodo = {
 
 const Create = () => {
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const router = useRouter();
 
   const handleCreateTodo = (value: ITodo) => {
     try {
-      const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY!, {
-        cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER!,
-        // useTLS: true,
-      });
 
-      const channel = pusher.subscribe("todo-channel");
+      console.log(value, 'vvv')
 
-      channel.bind("todo-update", (data: INewTodo) => {
-        createATodo(data);
-      });
-
-      dispatch(createATodo({ ...value, id: "" }));
+      dispatch(createTodosAync({...value, id: uuidv4()}));
 
       toast.success("Task created successfully");
       router.push("/");

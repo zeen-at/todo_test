@@ -29,6 +29,8 @@ export interface INewTodo {
     date: string;
     description: string;
     createdby: string;
+    start?: Date;   
+  end?: Date; 
 }
 
 export interface DateTimeFormatOptions {

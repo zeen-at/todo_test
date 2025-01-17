@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState } from 'react';
-import { INewTodo, TodoType } from '../../../types';
+import { INewTodo, TodoType } from '../../types';
 import { v4 as uuidv4 } from "uuid";
 
 
@@ -29,6 +29,7 @@ const TodoProvider:React.FC<{children: React.ReactNode}> = ({children}) => {
             createdby: todo.createdby,
             description: todo.description,
             done: todo.done,
+            
           };
           setTodos([...todos, newTodo])
 

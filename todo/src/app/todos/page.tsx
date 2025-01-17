@@ -5,31 +5,29 @@ import { MdOutlineDeleteOutline } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
 import SearchInput from "../../components/SearchInput";
 import Link from "next/link";
-import { RootState, useAppSelector } from "@/redux/store";
-import Header from "@/app/components/Header";
-import { INewTodo } from "../../../../types";
-import { colorArray, pusher } from "@/app/utils";
-import { useDispatch } from "react-redux";
+import { RootState, useAppSelector, useAppDispatch } from "@/redux/store";
+import Header from "@/components/Header";
+import { INewTodo } from "../../../types";
+import { colorArray } from "@/utils";
 import {
-  createATodo,
-  deleteTodo,
-  editTodo,
+  deleteTodosAync,
+  fetchTodosAync,
   updateTodo,
 } from "@/redux/slice/todoSlice";
 import { useRouter } from "next/navigation";
-import Container from "@/app/components/Container";
+import Container from "@/components/Container";
 
 const Todo = () => {
   const [query, setQuery] = useState("");
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const todos = useAppSelector((state: RootState) => state.todos);
 
   const router = useRouter();
 
   const handleDelete = (id: string) => {
-    dispatch(deleteTodo(id));
+    dispatch(deleteTodosAync(id));
   };
 
   const handleEdit = (id: string) => {
@@ -44,24 +42,8 @@ const Todo = () => {
   };
 
   useEffect(() => {
-    const channel = pusher.subscribe("todo-channel");
-
-    channel.bind("todo-edit", (data: { todo: INewTodo }) => {
-      dispatch(editTodo(data.todo));
-    });
-
-    channel.bind("todo-added", (data: { todo: INewTodo }) => {
-      dispatch(createATodo(data.todo));
-    });
-
-    channel.bind("todo-deleted", (data: { id: string }) => {
-      dispatch(deleteTodo(data.id));
-    });
-
-    return () => {
-      pusher.unsubscribe("todo-channel");
-    };
-  }, [dispatch]);
+    dispatch(fetchTodosAync());
+    }, [dispatch])
 
   const filteredtodo = todos?.filter(
     (item: INewTodo) =>

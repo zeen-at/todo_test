@@ -1,5 +1,5 @@
 import React from "react";
-import { IButton } from "../../../types";
+import { IButton } from "../../types";
 
 const CustomButton = ({ handleClick, title }: IButton) => {
   return (

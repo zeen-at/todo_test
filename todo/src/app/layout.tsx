@@ -3,9 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {TodoProvider} from "./context/Provider";
+import { TodoProvider } from "../context/Provider";
 import { ReduxProvider } from "@/redux/Provider";
-
+import TanstackQuery from "../utils/react-query";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,11 +23,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className}`}>
         <ReduxProvider>
-        <TodoProvider>
-          <ToastContainer />
-          {children}
-
-        </TodoProvider>
+          <TanstackQuery>
+            <TodoProvider>
+              <ToastContainer />
+              {children}
+            </TodoProvider>
+          </TanstackQuery>
         </ReduxProvider>
       </body>
     </html>

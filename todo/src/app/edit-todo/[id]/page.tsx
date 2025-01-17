@@ -5,20 +5,20 @@ import CustomButton from "../../../components/CustomButton";
 import CustomInput from "../../../components/CustomInput";
 import { Formik } from "formik";
 import { toast } from "react-toastify";
-import { EditTodoSchema } from "@/app/utils";
-import { INewTodo } from "../../../../../types";
+import { EditTodoSchema } from "@/utils";
+import { INewTodo } from "../../../../types";
 import { useParams, useRouter } from "next/navigation";
-import Header from "@/app/components/Header";
+import Header from "@/components/Header";
 import { useDispatch } from "react-redux";
-import { RootState, useAppSelector } from "@/redux/store";
-import { editTodo } from "@/redux/slice/todoSlice";
-import Container from "@/app/components/Container";
+import { RootState, useAppDispatch, useAppSelector } from "@/redux/store";
+import { editTodo, updateTodosAync } from "@/redux/slice/todoSlice";
+import Container from "@/components/Container";
 
 const EditTodo = () => {
   const params = useParams();
   const { id } = params;
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const router = useRouter();
 
@@ -45,7 +45,7 @@ const EditTodo = () => {
   const handleEdit = (values: INewTodo) => {
     if (id) {
       dispatch(
-        editTodo({
+        updateTodosAync({
           ...values,
           id: todos?.id,
         })

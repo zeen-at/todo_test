@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit"
-import { TypedUseSelectorHook, useSelector } from "react-redux";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import storage from "redux-persist/lib/storage";
 import todoReducer from "./slice/todoSlice"
 import { persistReducer, persistStore } from 'redux-persist';
@@ -26,6 +26,7 @@ export const store = configureStore({
 
 export type RootState = ReturnType<typeof store.getState> & PersistPartial;
 export type AppDispatch = typeof store.dispatch;
+export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 export const persistor = persistStore(store)

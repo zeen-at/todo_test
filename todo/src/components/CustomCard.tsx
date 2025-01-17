@@ -1,5 +1,5 @@
 import React from "react";
-import { ICard } from "../../../types";
+import { ICard } from "../../types";
 
 const CustomCard = ({ title, subtitle, progress }: ICard) => {
   return (

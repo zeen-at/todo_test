@@ -1,5 +1,5 @@
 import React from "react";
-import { IHeader } from "../../../types";
+import { IHeader } from "../../types";
 import { useRouter } from "next/navigation";
 import { IoChevronBackOutline } from "react-icons/io5";
 

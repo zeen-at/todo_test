@@ -1,5 +1,5 @@
 import React from "react";
-import { IForm } from "../../../types";
+import { IForm } from "../../types";
 
 const CustomInput = ({
   error,
