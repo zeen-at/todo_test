@@ -30,7 +30,6 @@ const Create = () => {
 
   const handleCreateTodo = (value: ITodo) => {
     try {
-      console.log(value, "vvv");
 
       dispatch(createTodosAync({ ...value, id: uuidv4() }));
 
@@ -103,6 +102,7 @@ const Create = () => {
                       onChange={handleChange("category")}
                       className="dark:bg-gray-900 dark:text-gray-200 outline-none"
                     >
+                      <option value="">Category</option>
                       <option value="urgent">Urgent</option>
                       <option value="personal">Personal</option>
                       <option value="work">Work</option>
